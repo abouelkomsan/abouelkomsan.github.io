@@ -70,10 +70,11 @@
           <a class="rounded-xl border border-slate-300/60 dark:border-slate-700 px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-900" target="_blank" rel="noopener" href="https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en">Google Scholar ↗</a>
         </div>
       </div>
-      <div class=\"md:justify-self-end\">
+      <div class="md:justify-self-end">
         <!-- Portrait -->
-        <div class=\"rounded-2xl border border-slate-200 dark:border-slate-800 p-2 bg-gradient-to-br from-amber-50 to-white dark:from-slate-900 dark:to-slate-950\">
-          <img src=\"me.jpg\" alt=\"Portrait of Ahmed Abouelkomsan\" class=\"w-48 h-48 md:w-56 md:h-56 object-cover rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800\" onerror=\"this.src='https://via.placeholder.com/256?text=Add+me.jpg';\">
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-2 bg-gradient-to-br from-amber-50 to-white dark:from-slate-900 dark:to-slate-950">
+          <img src="me.jpg" alt="Portrait of Ahmed Abouelkomsan" class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800" onerror="this.src='https://via.placeholder.com/256?text=Add+me.jpg';">
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">Add a <code>me.jpg</code> (≈512×512) to the repo root to show your photo.</p>
         </div>
       </div>
     </div>
@@ -90,22 +91,22 @@
   </section>
 
   <!-- SELECTED PUBLICATIONS -->
-  <section id=\"publications\" class=\"mx-auto max-w-5xl px-4 sm:px-6 pt-8 pb-12\">
-    <div class=\"flex items-end justify-between gap-4\">
-      <h2 class=\"text-2xl font-bold\">Publications</h2>
-      <div class=\"text-sm flex items-center gap-3\">
-        <input id=\"searchInput\" type=\"text\" placeholder=\"Filter by title/author/year\" class=\"rounded-lg border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs bg-white dark:bg-slate-950\">
-        <button id=\"copyBibBtn\" class=\"rounded-lg border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-900\">Copy BibTeX (visible)</button>
+  <section id="publications" class="mx-auto max-w-5xl px-4 sm:px-6 pt-8 pb-12">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-2xl font-bold">Publications</h2>
+      <div class="text-sm flex items-center gap-3">
+        <input id="searchInput" type="text" placeholder="Filter by title/author/year" class="rounded-lg border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs bg-white dark:bg-slate-950">
+        <button id="copyBibBtn" class="rounded-lg border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-900">Copy BibTeX (visible)</button>
       </div>
     </div>
 
-    <p class=\"mt-2 text-xs text-slate-500 dark:text-slate-400\">This list loads from <code>publications.json<\/code> if present; otherwise it falls back to a small built-in list. To include <strong>all<\/strong> publications, export or assemble a JSON file named <code>publications.json<\/code> in the repo root.</p>
-    <ol id=\"pubList\" class=\"mt-6 space-y-5\"></ol>
-    <p class=\"mt-6 text-sm text-slate-500 dark:text-slate-400\">For a complete and always-current record, see <a href=\"https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en\" target=\"_blank\" rel=\"noopener\">Google Scholar</a>.</p>
+    <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">This list loads from <code>publications.json<\/code> if present; otherwise it falls back to a small built-in list. To include <strong>all<\/strong> publications, export or assemble a JSON file named <code>publications.json<\/code> in the repo root.</p>
+    <ol id="pubList" class="mt-6 space-y-5"></ol>
+    <p class="mt-6 text-sm text-slate-500 dark:text-slate-400">For a complete and always-current record, see <a href="https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
   </section>
 
   <!-- NEWS -->
-  <section id=\"news\" class="mx-auto max-w-5xl px-4 sm:px-6 pb-12">
+  <section id="news" class="mx-auto max-w-5xl px-4 sm:px-6 pb-12">
     <h2 class="text-2xl font-bold">News</h2>
     <ul id="newsList" class="mt-4 space-y-2 text-sm"></ul>
   </section>
