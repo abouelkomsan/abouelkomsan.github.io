@@ -70,15 +70,11 @@
           <a class="rounded-xl border border-slate-300/60 dark:border-slate-700 px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-900" target="_blank" rel="noopener" href="https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en">Google Scholar ↗</a>
         </div>
       </div>
-      <div class="md:justify-self-end">
-        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-4 bg-gradient-to-br from-amber-50 to-white dark:from-slate-900 dark:to-slate-950">
-          <h3 class="font-semibold">At a glance</h3>
-          <ul class="mt-2 space-y-1 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
-            <li>Fractional Chern insulators (FCIs) & fractional quantum Hall analogs in moiré bands</li>
-            <li>Chiral topological superconductivity & vortex lattices in Chern bands</li>
-            <li>Variational Monte Carlo with neural-network wavefunctions</li>
-            <li>Quantum geometry (Berry curvature, quantum metric) and band topology</li>
-          </ul>
+      <div class=\"md:justify-self-end\">
+        <!-- Portrait -->
+        <div class=\"rounded-2xl border border-slate-200 dark:border-slate-800 p-2 bg-gradient-to-br from-amber-50 to-white dark:from-slate-900 dark:to-slate-950\">
+          <img src=\"me.jpg\" alt=\"Portrait of Ahmed Abouelkomsan\" class=\"w-48 h-48 md:w-56 md:h-56 object-cover rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800\" onerror=\"this.src='https://via.placeholder.com/256?text=Add+me.jpg';\">
+          <p class=\"mt-2 text-xs text-slate-500 dark:text-slate-400\">Add a <code>me.jpg</code> (≈512×512) to the repo root to show your photo.</p>
         </div>
       </div>
     </div>
@@ -95,22 +91,22 @@
   </section>
 
   <!-- SELECTED PUBLICATIONS -->
-  <section id="publications" class="mx-auto max-w-5xl px-4 sm:px-6 pt-8 pb-12">
-    <div class="flex items-end justify-between gap-4">
-      <h2 class="text-2xl font-bold">Publications</h2>
-      <div class="text-sm flex items-center gap-3">
-        <label class="inline-flex items-center gap-2"><input id="onlySelected" type="checkbox" class="accent-amber-600" checked> Show selected</label>
-        <button id="copyBibBtn" class="rounded-lg border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-900">Copy BibTeX for visible</button>
+  <section id=\"publications\" class=\"mx-auto max-w-5xl px-4 sm:px-6 pt-8 pb-12\">
+    <div class=\"flex items-end justify-between gap-4\">
+      <h2 class=\"text-2xl font-bold\">Publications</h2>
+      <div class=\"text-sm flex items-center gap-3\">
+        <input id=\"searchInput\" type=\"text\" placeholder=\"Filter by title/author/year\" class=\"rounded-lg border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs bg-white dark:bg-slate-950\">
+        <button id=\"copyBibBtn\" class=\"rounded-lg border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-900\">Copy BibTeX (visible)</button>
       </div>
     </div>
 
-    <ol id="pubList" class="mt-6 space-y-5"></ol>
-
-    <p class="mt-6 text-sm text-slate-500 dark:text-slate-400">This list is hand‑curated. For a complete and always‑current record, see <a href="https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+    <p class=\"mt-2 text-xs text-slate-500 dark:text-slate-400\">This list loads from <code>publications.json<\/code> if present; otherwise it falls back to a small built-in list. To include <strong>all<\/strong> publications, export or assemble a JSON file named <code>publications.json<\/code> in the repo root.</p>
+    <ol id=\"pubList\" class=\"mt-6 space-y-5\"></ol>
+    <p class=\"mt-6 text-sm text-slate-500 dark:text-slate-400\">For a complete and always-current record, see <a href=\"https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en\" target=\"_blank\" rel=\"noopener\">Google Scholar</a>.</p>
   </section>
 
   <!-- NEWS -->
-  <section id="news" class="mx-auto max-w-5xl px-4 sm:px-6 pb-12">
+  <section id=\"news\" class="mx-auto max-w-5xl px-4 sm:px-6 pb-12">
     <h2 class="text-2xl font-bold">News</h2>
     <ul id="newsList" class="mt-4 space-y-2 text-sm"></ul>
   </section>
@@ -159,7 +155,9 @@
       return `${type}{${key},\n${lines.join(',\n')}\n}`
     };
 
-    // Selected publications (update freely). Authors: put your name in **bold** via authorBold flag.
+    // Publications: built-in fallback (used if pubs.bib not found).
+    // To show ALL publications, export BibTeX from Google Scholar (or Zotero, etc.)
+    // and place it as `pubs.bib` in the repo root.
     const PUBLICATIONS = [
       {
         title: 'Compressible Quantum Liquid with Vanishing Drude Weight',
@@ -168,7 +166,6 @@
         venue: 'Phys. Rev. Lett. 134, 176501 (2025)',
         year: 2025,
         links: { doi: 'https://doi.org/10.1103/PhysRevLett.134.176501' },
-        selected: true,
         bibtex: bib({ key: 'AbouelkomsanPRL2025', fields: { author: 'Abouelkomsan, Ahmed and Paul, Nisarga and Stern, Ady and Fu, Liang', title: 'Compressible Quantum Liquid with Vanishing Drude Weight', journal: 'Physical Review Letters', year: '2025', volume: '134', pages: '176501', doi: '10.1103/PhysRevLett.134.176501' } })
       },
       {
@@ -178,8 +175,16 @@
         venue: 'arXiv:2506.10938 (2025)',
         year: 2025,
         links: { arxiv: 'https://arxiv.org/abs/2506.10938' },
-        selected: true,
         bibtex: bib({ key: 'GuerciAbouelkomsanFu2025', fields: { author: 'Guerci, Daniele and Abouelkomsan, Ahmed and Fu, Liang', title: 'From Fractionalization to Chiral Topological Superconductivity in Flat Chern Band', journal: 'arXiv preprint arXiv:2506.10938', year: '2025' } })
+      },
+      {
+        title: 'Shining light on collective modes in moiré fractional Chern insulators',
+        authors: ['Nisarga Paul','Ahmed Abouelkomsan','Aidan Reddy','Liang Fu'],
+        authorBold: 'Ahmed Abouelkomsan',
+        venue: 'arXiv:2502.17569 (2025)',
+        year: 2025,
+        links: { arxiv: 'https://arxiv.org/abs/2502.17569' },
+        bibtex: bib({ key: 'PaulAbouelkomsan2025', fields: { author: 'Paul, Nisarga and Abouelkomsan, Ahmed and Reddy, Aidan and Fu, Liang', title: 'Shining light on collective modes in moiré fractional Chern insulators', journal: 'arXiv preprint arXiv:2502.17569', year: '2025' } })
       },
       {
         title: 'Multiferroicity and Topology in Twisted Transition Metal Dichalcogenides',
@@ -188,7 +193,6 @@
         venue: 'Phys. Rev. Lett. 133, 026801 (2024)',
         year: 2024,
         links: { doi: 'https://doi.org/10.1103/PhysRevLett.133.026801' },
-        selected: true,
         bibtex: bib({ key: 'AbouelkomsanPRL2024', fields: { author: 'Abouelkomsan, Ahmed and Bergholtz, Emil J.', title: 'Multiferroicity and Topology in Twisted Transition Metal Dichalcogenides', journal: 'Physical Review Letters', year: '2024', volume: '133', pages: '026801', doi: '10.1103/PhysRevLett.133.026801' } })
       },
       {
@@ -198,8 +202,7 @@
         venue: 'Phys. Rev. B 109, L121107 (2024) — Preprint: arXiv:2309.16548',
         year: 2024,
         links: { arxiv: 'https://arxiv.org/abs/2309.16548' },
-        selected: false,
-        bibtex: bib({ key: 'AbouelkomsanPRB2024', fields: { author: 'Abouelkomsan, Ahmed and Reddy, Aidan P. and Fu, Liang and Bergholtz, Emil J.', title: 'Band mixing in the quantum anomalous Hall regime of twisted semiconductor bilayers', journal: 'Physical Review B', year: '2024', volume: '109', pages: '125132' } })
+        bibtex: bib({ key: 'AbouelkomsanPRB2024', fields: { author: 'Abouelkomsan, Ahmed and Reddy, Aidan P. and Fu, Liang and Bergholtz, Emil J.', title: 'Band mixing in the quantum anomalous Hall regime of twisted semiconductor bilayers', journal: 'Physical Review B', year: '2024', volume: '109', pages: 'L121107' } })
       },
       {
         title: 'Quantum Metric Induced Phases in Moiré Materials',
@@ -208,7 +211,6 @@
         venue: 'Phys. Rev. Research 5, L012015 (2023)',
         year: 2023,
         links: { arxiv: 'https://arxiv.org/abs/2202.10467' },
-        selected: true,
         bibtex: bib({ key: 'AbouelkomsanPRR2023', fields: { author: 'Abouelkomsan, Ahmed and Yang, Kang and Bergholtz, Emil J.', title: 'Quantum Metric Induced Phases in Moiré Materials', journal: 'Physical Review Research', year: '2023', volume: '5', pages: 'L012015' } })
       },
       {
@@ -218,18 +220,7 @@
         venue: 'Phys. Rev. Lett. 124, 106803 (2020)',
         year: 2020,
         links: { doi: 'https://doi.org/10.1103/PhysRevLett.124.106803', arxiv: 'https://arxiv.org/abs/1912.04907' },
-        selected: true,
         bibtex: bib({ key: 'AbouelkomsanPRL2020', fields: { author: 'Abouelkomsan, Ahmed and Liu, Zhao and Bergholtz, Emil J.', title: 'Particle-Hole Duality, Emergent Fermi Liquids, and Fractional Chern Insulators', journal: 'Physical Review Letters', year: '2020', volume: '124', pages: '106803', doi: '10.1103/PhysRevLett.124.106803' } })
-      },
-      {
-        title: 'Shining light on collective modes in moiré fractional Chern insulators',
-        authors: ['Nisarga Paul','Ahmed Abouelkomsan','Aidan Reddy','Liang Fu'],
-        authorBold: 'Ahmed Abouelkomsan',
-        venue: 'arXiv:2502.17569 (2025)',
-        year: 2025,
-        links: { arxiv: 'https://arxiv.org/abs/2502.17569' },
-        selected: false,
-        bibtex: bib({ key: 'PaulAbouelkomsan2025', fields: { author: 'Paul, Nisarga and Abouelkomsan, Ahmed and Reddy, Aidan and Fu, Liang', title: 'Shining light on collective modes in moiré fractional Chern insulators', journal: 'arXiv preprint arXiv:2502.17569', year: '2025' } })
       }
     ];
 
@@ -258,24 +249,22 @@
     };
 
     function renderPublications(list) {
-      const showSelected = document.getElementById('onlySelected').checked;
       const pubList = document.getElementById('pubList');
       pubList.innerHTML = '';
-      const pubs = [...list].sort((a,b) => b.year - a.year).filter(p => showSelected ? p.selected : true);
+      const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
+      const pubs = [...list].sort((a,b) => (b.year||0) - (a.year||0)).filter(p => {
+        const hay = [p.title, p.venue, String(p.year||''), ...(p.authors||[])].join(' ').toLowerCase();
+        return hay.includes(q);
+      });
       for (const p of pubs) {
         const titleLink = p.links?.doi || p.links?.arxiv || '#';
         const title = el('a', { href: titleLink, target: '_blank', rel: 'noopener', class: 'font-semibold underline underline-offset-2 decoration-slate-300 hover:decoration-amber-600' }, p.title);
-        const authors = p.authors.map(name => name === p.authorBold ? `**${name}**` : name).join(', ');
-        const meta = `${p.venue}`;
+        const authors = (p.authors||[]).map(name => name === p.authorBold ? `**${name}**` : name).join(', ');
+        const meta = p.venue || '';
         const li = el('li', { class: 'rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover:bg-slate-50 dark:hover:bg-slate-900' }, [
-          el('div', { class: 'flex items-start justify-between gap-3' }, [
-            el('div', {}, [
-              el('div', { class: 'text-sm text-slate-600 dark:text-slate-300' }, authors.replaceAll('**','')), // remove markdown for display
-              el('div', { class: 'mt-1' }, title),
-              el('div', { class: 'mt-1 text-xs text-slate-500 dark:text-slate-400' }, meta)
-            ]),
-            p.selected ? el('span', { class: 'ml-2 text-[10px] bg-amber-600 text-white px-2 py-1 rounded-lg h-fit' }, 'selected') : null
-          ]),
+          el('div', { class: 'text-sm text-slate-600 dark:text-slate-300' }, authors.replaceAll('**','')),
+          el('div', { class: 'mt-1' }, title),
+          el('div', { class: 'mt-1 text-xs text-slate-500 dark:text-slate-400' }, meta),
           el('div', { class: 'mt-2 flex gap-3 text-xs' }, [
             p.links?.doi ? el('a', { href: p.links.doi, target: '_blank', rel: 'noopener', class: 'underline' }, 'DOI') : null,
             p.links?.arxiv ? el('a', { href: p.links.arxiv, target: '_blank', rel: 'noopener', class: 'underline' }, 'arXiv') : null
@@ -286,6 +275,18 @@
     }
 
     function copyVisibleBib() {
+      const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
+      const pubs = [...window.ALL_PUBS].sort((a,b) => (b.year||0)-(a.year||0)).filter(p => {
+        const hay = [p.title, p.venue, String(p.year||''), ...(p.authors||[])].join(' ').toLowerCase();
+        return hay.includes(q);
+      });
+      const text = pubs.map(p => p.bibtex).join('
+
+');
+      navigator.clipboard.writeText(text).then(() => {
+        alert('BibTeX copied for ' + pubs.length + ' entries.');
+      });
+    }() {
       const showSelected = document.getElementById('onlySelected').checked;
       const pubs = [...PUBLICATIONS].sort((a,b) => b.year - a.year).filter(p => showSelected ? p.selected : true);
       const text = pubs.map(p => p.bibtex).join('\n\n');
@@ -307,12 +308,24 @@
     }
 
     // Wire up basic stuff
-    document.getElementById('onlySelected').addEventListener('change', () => renderPublications(PUBLICATIONS));
     document.getElementById('copyBibBtn').addEventListener('click', copyVisibleBib);
+    document.getElementById('searchInput').addEventListener('input', () => renderPublications(window.ALL_PUBS || []));
     document.getElementById('themeBtn').addEventListener('click', () => {
       const d = document.documentElement.classList.toggle('dark');
       localStorage.setItem('theme', d ? 'dark' : 'light');
     });
+
+    // Try to load publications.json; if not found, fall back to PUBLICATIONS
+    async function loadPubs() {
+      try {
+        const res = await fetch('publications.json', { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length) return data;
+        }
+      } catch (e) { }
+      return PUBLICATIONS;
+    }
 
     // Footer stamps
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -322,8 +335,12 @@
     if (SITE.cv) document.getElementById('cvLink').href = SITE.cv;
     document.getElementById('affil').textContent = 'Affiliation: ' + SITE.affiliation;
 
-    // Initial render
-    renderPublications(PUBLICATIONS);
+    // Boot — try to load publications.json, otherwise fallback
+    loadPubs().then(list => {
+      window.ALL_PUBS = list;
+      renderPublications(list);
+    });
+
     renderNews(NEWS);
   </script>
 </body>
