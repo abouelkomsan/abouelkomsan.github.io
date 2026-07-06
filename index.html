@@ -1,694 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ahmed Abouelkomsan — Academic Website</title>
-  <meta name="description" content="Ahmed Abouelkomsan — theoretical physicist in condensed matter theory. Publications, research, talks, and contact." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3Eα%3C/text%3E%3C/svg%3E"/>
-
-  <!-- Tailwind config must come before loading Tailwind -->
-  <script>
-    window.tailwind = {
-      config: {
-        darkMode: 'class'
-      }
-    };
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Ahmed Abouelkomsan</title>
 
   <style>
-    .fade-in {
-      animation: fade-in 0.6s ease both;
+    body {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #111;
+      background: #fff;
     }
 
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-        transform: translateY(4px);
-      }
-      to {
-        opacity: 1;
-        transform: none;
-      }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      font-weight: normal;
     }
 
-    .prose a {
+    h2 {
+      font-size: 24px;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      font-weight: normal;
+    }
+
+    a {
+      color: #0645ad;
+      text-decoration: none;
+    }
+
+    a:hover {
       text-decoration: underline;
-      text-underline-offset: 2px;
     }
 
-    .kbd {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: .75rem;
-      background: rgba(127,127,127,.15);
-      border: 1px solid rgba(127,127,127,.3);
-      border-bottom-width: 2px;
-      padding: .15rem .35rem;
-      border-radius: .35rem;
+    .profile {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+
+    .profile img {
+      width: 210px;
+      border-radius: 4px;
+    }
+
+    .links {
+      margin-top: 18px;
+    }
+
+    .links a {
+      margin-right: 10px;
+    }
+
+    @media (max-width: 650px) {
+      .profile {
+        display: block;
+      }
+
+      .profile img {
+        width: 180px;
+        margin-bottom: 20px;
+      }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ahmed Abouelkomsan",
-    "jobTitle": "Theoretical Physicist, Condensed Matter Theory",
-    "url": "https://abouelkomsan.com/",
-    "affiliation": {
-      "@type": "Organization",
-      "name": "Massachusetts Institute of Technology"
-    },
-    "sameAs": [
-      "https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en",
-      "https://github.com/abouelkomsan"
-    ]
-  }
-  </script>
 </head>
 
-<body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 selection:bg-amber-200/60 selection:text-black">
-  <script>
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
+<body>
 
-  <!-- NAVBAR -->
-  <header class="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-slate-950/60">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 py-3 flex items-center justify-between">
-      <a href="#top" class="font-bold tracking-tight text-lg">
-        Ahmed <span class="text-amber-600">Abouelkomsan</span>
-      </a>
+  <h1>Ahmed Abouelkomsan</h1>
 
-      <nav class="hidden sm:flex gap-6 text-sm">
-        <a href="#about" class="hover:text-amber-600">About</a>
-        <a href="#research" class="hover:text-amber-600">Research</a>
-        <a href="#publications" class="hover:text-amber-600">Publications</a>
-        <a href="#news" class="hover:text-amber-600">News</a>
-        <a href="#contact" class="hover:text-amber-600">Contact</a>
-      </nav>
+  <div class="profile">
+    <img src="me.jpg" alt="Ahmed Abouelkomsan">
 
-      <div class="flex items-center gap-3">
-        <button
-          id="themeBtn"
-          class="rounded-xl border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-900"
-          aria-label="Toggle dark mode">
-          ☾
-        </button>
-
-        <a
-          id="cvLink"
-          href="cv.pdf"
-          class="hidden sm:inline-block rounded-xl bg-amber-600 text-white px-3 py-1 text-xs font-medium hover:bg-amber-700">
-          CV
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="top" class="mx-auto max-w-5xl px-4 sm:px-6 pt-12 pb-8">
-    <div class="grid md:grid-cols-[2fr,1fr] gap-10 items-center">
-      <div class="fade-in">
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-          Ahmed Abouelkomsan
-        </h1>
-
-        <p class="mt-3 text-lg text-slate-600 dark:text-slate-300">
-          Theoretical physics · condensed matter theory · flat bands · topological order
-        </p>
-
-        <p id="affil" class="mt-1 text-slate-500 dark:text-slate-400">
-          Affiliation: Massachusetts Institute of Technology
-        </p>
-
-        <div class="mt-5 flex flex-wrap gap-3">
-          <a
-            class="rounded-xl border border-slate-300/60 dark:border-slate-700 px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-900"
-            href="#publications">
-            See publications
-          </a>
-
-          <a
-            class="rounded-xl bg-amber-600 text-white px-4 py-2 text-sm font-medium hover:bg-amber-700"
-            href="mailto:aabouelkomsan@gmail.com">
-            Email me
-          </a>
-
-          <a
-            class="rounded-xl border border-slate-300/60 dark:border-slate-700 px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-900"
-            target="_blank"
-            rel="noopener"
-            href="https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en">
-            Google Scholar ↗
-          </a>
-        </div>
-      </div>
-
-      <div class="md:justify-self-end">
-        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-2 bg-gradient-to-br from-amber-50 to-white dark:from-slate-900 dark:to-slate-950">
-          <img
-            src="me.jpg"
-            alt="Portrait of Ahmed Abouelkomsan"
-            class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800"
-            onerror="this.src='https://via.placeholder.com/256?text=Add+me.jpg';">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT / RESEARCH -->
-  <section id="about" class="mx-auto max-w-5xl px-4 sm:px-6 pb-4">
-    <div class="prose prose-slate dark:prose-invert max-w-none">
-      <h2 id="research">Research</h2>
-
+    <div>
       <p>
-        I study strongly correlated phases of electrons and bosons in flat
-        <em>Chern bands</em> and moiré materials. My work explores how interactions,
-        topology, and quantum geometry conspire to produce fractionalized liquids,
-        charge order, and unconventional superconductivity. A current focus is
-        building and benchmarking neural-network variational wavefunctions
-        that respect magnetic translation symmetries on the torus.
-      </p>
-    </div>
-  </section>
-
-  <!-- SELECTED PUBLICATIONS -->
-  <section id="publications" class="mx-auto max-w-5xl px-4 sm:px-6 pt-8 pb-12">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-      <h2 class="text-2xl font-bold">Publications</h2>
-
-      <div class="text-sm flex flex-col sm:flex-row items-start sm:items-center gap-3">
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Filter by title, author, or year"
-          class="rounded-lg border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs bg-white dark:bg-slate-950">
-
-        <button
-          id="copyBibBtn"
-          class="rounded-lg border border-slate-300/60 dark:border-slate-700 px-3 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-900">
-          Copy BibTeX visible
-        </button>
-      </div>
-    </div>
-
-    <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
-      This list loads from <code>publications.json</code> if present; otherwise it falls back to a small built-in list.
-      To include all publications, export or assemble a JSON file named <code>publications.json</code> in the repo root.
-    </p>
-
-    <ol id="pubList" class="mt-6 space-y-5"></ol>
-
-    <p class="mt-6 text-sm text-slate-500 dark:text-slate-400">
-      For a complete and always-current record, see
-      <a
-        class="underline"
-        href="https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en"
-        target="_blank"
-        rel="noopener">
-        Google Scholar
-      </a>.
-    </p>
-  </section>
-
-  <!-- NEWS -->
-  <section id="news" class="mx-auto max-w-5xl px-4 sm:px-6 pb-12">
-    <h2 class="text-2xl font-bold">News</h2>
-    <ul id="newsList" class="mt-4 space-y-2 text-sm"></ul>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="mx-auto max-w-5xl px-4 sm:px-6 pb-16">
-    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
-      <h2 class="text-2xl font-bold">Contact</h2>
-
-      <div class="mt-3 grid sm:grid-cols-2 gap-4 text-sm">
-        <div>
-          <p>
-            Email:
-            <a class="underline" href="mailto:aabouelkomsan@gmail.com">
-              aabouelkomsan@gmail.com
-            </a>
-          </p>
-
-          <p>
-            Scholar:
-            <a
-              class="underline"
-              target="_blank"
-              rel="noopener"
-              href="https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en">
-              scholar profile ↗
-            </a>
-          </p>
-        </div>
-
-        <div class="flex gap-3 items-center">
-          <a
-            class="underline"
-            href="https://github.com/abouelkomsan"
-            target="_blank"
-            rel="noopener">
-            GitHub
-          </a>
-
-          <a
-            class="underline"
-            href="#"
-            target="_blank"
-            rel="noopener">
-            X/Twitter
-          </a>
-
-          <a
-            class="underline"
-            href="#"
-            target="_blank"
-            rel="noopener">
-            ORCID
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="border-t border-slate-200 dark:border-slate-800">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 py-6 text-xs flex items-center justify-between text-slate-500 dark:text-slate-400">
-      <p>
-        © <span id="year"></span> Ahmed Abouelkomsan.
-        Last updated <span id="updated"></span>.
+        I am a postdoctoral researcher in theoretical condensed matter physics at
+        MIT. My research focuses on strongly correlated quantum matter, including
+        fractional Chern insulators, flat bands, moiré materials, Wigner crystals,
+        and unconventional superconductivity.
       </p>
 
-      <a href="#top" class="hover:text-amber-600">
-        Back to top ↑
-      </a>
+      <p>
+        I am particularly interested in how topology, interactions, and quantum
+        geometry give rise to new phases of matter. I also develop and use
+        computational tools, including exact diagonalization and neural-network
+        variational Monte Carlo.
+      </p>
+
+      <p class="links">
+        <a href="https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en">Google Scholar</a> |
+        <a href="https://github.com/abouelkomsan">GitHub</a> |
+        <a href="cv.pdf">CV</a> |
+        <a href="mailto:aabouelkomsan@gmail.com">Email</a>
+      </p>
     </div>
-  </footer>
+  </div>
 
-  <script>
-    /* ========================
-       CONFIG
-    ======================== */
-    const SITE = {
-      name: 'Ahmed Abouelkomsan',
-      email: 'aabouelkomsan@gmail.com',
-      github: 'abouelkomsan',
-      scholar: 'https://scholar.google.se/citations?user=XpIB4CcAAAAJ&hl=en',
-      affiliation: 'Massachusetts Institute of Technology',
-      cv: 'cv.pdf'
-    };
+  <h2>Contact</h2>
 
-    const bib = ({ type = '@article', key, fields }) => {
-      const lines = Object.entries(fields).map(([k, v]) => `  ${k} = {${v}}`);
-      return `${type}{${key},\n${lines.join(',\n')}\n}`;
-    };
+  <p>
+    Email: <a href="mailto:aabouelkomsan@gmail.com">aabouelkomsan@gmail.com</a>
+  </p>
 
-    const PUBLICATIONS = [
-      {
-        title: 'Compressible Quantum Liquid with Vanishing Drude Weight',
-        authors: ['Ahmed Abouelkomsan', 'Nisarga Paul', 'Ady Stern', 'Liang Fu'],
-        authorBold: 'Ahmed Abouelkomsan',
-        venue: 'Phys. Rev. Lett. 134, 176501 (2025)',
-        year: 2025,
-        links: {
-          doi: 'https://doi.org/10.1103/PhysRevLett.134.176501'
-        },
-        bibtex: bib({
-          key: 'AbouelkomsanPRL2025',
-          fields: {
-            author: 'Abouelkomsan, Ahmed and Paul, Nisarga and Stern, Ady and Fu, Liang',
-            title: 'Compressible Quantum Liquid with Vanishing Drude Weight',
-            journal: 'Physical Review Letters',
-            year: '2025',
-            volume: '134',
-            pages: '176501',
-            doi: '10.1103/PhysRevLett.134.176501'
-          }
-        })
-      },
-      {
-        title: 'From Fractionalization to Chiral Topological Superconductivity in Flat Chern Band',
-        authors: ['Daniele Guerci', 'Ahmed Abouelkomsan', 'Liang Fu'],
-        authorBold: 'Ahmed Abouelkomsan',
-        venue: 'arXiv:2506.10938 (2025)',
-        year: 2025,
-        links: {
-          arxiv: 'https://arxiv.org/abs/2506.10938'
-        },
-        bibtex: bib({
-          key: 'GuerciAbouelkomsanFu2025',
-          fields: {
-            author: 'Guerci, Daniele and Abouelkomsan, Ahmed and Fu, Liang',
-            title: 'From Fractionalization to Chiral Topological Superconductivity in Flat Chern Band',
-            journal: 'arXiv preprint arXiv:2506.10938',
-            year: '2025'
-          }
-        })
-      },
-      {
-        title: 'Shining light on collective modes in moiré fractional Chern insulators',
-        authors: ['Nisarga Paul', 'Ahmed Abouelkomsan', 'Aidan Reddy', 'Liang Fu'],
-        authorBold: 'Ahmed Abouelkomsan',
-        venue: 'arXiv:2502.17569 (2025)',
-        year: 2025,
-        links: {
-          arxiv: 'https://arxiv.org/abs/2502.17569'
-        },
-        bibtex: bib({
-          key: 'PaulAbouelkomsan2025',
-          fields: {
-            author: 'Paul, Nisarga and Abouelkomsan, Ahmed and Reddy, Aidan and Fu, Liang',
-            title: 'Shining light on collective modes in moire fractional Chern insulators',
-            journal: 'arXiv preprint arXiv:2502.17569',
-            year: '2025'
-          }
-        })
-      },
-      {
-        title: 'Multiferroicity and Topology in Twisted Transition Metal Dichalcogenides',
-        authors: ['Ahmed Abouelkomsan', 'Emil J. Bergholtz'],
-        authorBold: 'Ahmed Abouelkomsan',
-        venue: 'Phys. Rev. Lett. 133, 026801 (2024)',
-        year: 2024,
-        links: {
-          doi: 'https://doi.org/10.1103/PhysRevLett.133.026801'
-        },
-        bibtex: bib({
-          key: 'AbouelkomsanPRL2024',
-          fields: {
-            author: 'Abouelkomsan, Ahmed and Bergholtz, Emil J.',
-            title: 'Multiferroicity and Topology in Twisted Transition Metal Dichalcogenides',
-            journal: 'Physical Review Letters',
-            year: '2024',
-            volume: '133',
-            pages: '026801',
-            doi: '10.1103/PhysRevLett.133.026801'
-          }
-        })
-      },
-      {
-        title: 'Band mixing in the quantum anomalous Hall regime of twisted semiconductor bilayers',
-        authors: ['Ahmed Abouelkomsan', 'Aidan P. Reddy', 'Liang Fu', 'Emil J. Bergholtz'],
-        authorBold: 'Ahmed Abouelkomsan',
-        venue: 'Phys. Rev. B 109, L121107 (2024) — Preprint: arXiv:2309.16548',
-        year: 2024,
-        links: {
-          arxiv: 'https://arxiv.org/abs/2309.16548'
-        },
-        bibtex: bib({
-          key: 'AbouelkomsanPRB2024',
-          fields: {
-            author: 'Abouelkomsan, Ahmed and Reddy, Aidan P. and Fu, Liang and Bergholtz, Emil J.',
-            title: 'Band mixing in the quantum anomalous Hall regime of twisted semiconductor bilayers',
-            journal: 'Physical Review B',
-            year: '2024',
-            volume: '109',
-            pages: 'L121107'
-          }
-        })
-      },
-      {
-        title: 'Quantum Metric Induced Phases in Moiré Materials',
-        authors: ['Ahmed Abouelkomsan', 'Kang Yang', 'Emil J. Bergholtz'],
-        authorBold: 'Ahmed Abouelkomsan',
-        venue: 'Phys. Rev. Research 5, L012015 (2023)',
-        year: 2023,
-        links: {
-          arxiv: 'https://arxiv.org/abs/2202.10467'
-        },
-        bibtex: bib({
-          key: 'AbouelkomsanPRR2023',
-          fields: {
-            author: 'Abouelkomsan, Ahmed and Yang, Kang and Bergholtz, Emil J.',
-            title: 'Quantum Metric Induced Phases in Moire Materials',
-            journal: 'Physical Review Research',
-            year: '2023',
-            volume: '5',
-            pages: 'L012015'
-          }
-        })
-      },
-      {
-        title: 'Particle-Hole Duality, Emergent Fermi Liquids, and Fractional Chern Insulators',
-        authors: ['Ahmed Abouelkomsan', 'Zhao Liu', 'Emil J. Bergholtz'],
-        authorBold: 'Ahmed Abouelkomsan',
-        venue: 'Phys. Rev. Lett. 124, 106803 (2020)',
-        year: 2020,
-        links: {
-          doi: 'https://doi.org/10.1103/PhysRevLett.124.106803',
-          arxiv: 'https://arxiv.org/abs/1912.04907'
-        },
-        bibtex: bib({
-          key: 'AbouelkomsanPRL2020',
-          fields: {
-            author: 'Abouelkomsan, Ahmed and Liu, Zhao and Bergholtz, Emil J.',
-            title: 'Particle-Hole Duality, Emergent Fermi Liquids, and Fractional Chern Insulators',
-            journal: 'Physical Review Letters',
-            year: '2020',
-            volume: '124',
-            pages: '106803',
-            doi: '10.1103/PhysRevLett.124.106803'
-          }
-        })
-      }
-    ];
-
-    const NEWS = [
-      {
-        date: '2025-06-12',
-        text: 'Preprint out: From Fractionalization to Chiral Topological Superconductivity in Flat Chern Band, with D. Guerci and L. Fu.'
-      },
-      {
-        date: '2025-02-27',
-        text: 'New preprint with N. Paul, A. Reddy, and L. Fu on optical modes of moiré fractional Chern insulators.'
-      },
-      {
-        date: '2024-07-01',
-        text: 'PRL: Multiferroicity and Topology in Twisted Transition Metal Dichalcogenides.'
-      }
-    ];
-
-    /* ========================
-       RENDERING
-    ======================== */
-    const el = (tag, attrs = {}, children = []) => {
-      const node = document.createElement(tag);
-
-      Object.entries(attrs).forEach(([k, v]) => {
-        if (k === 'class') {
-          node.className = v;
-        } else if (k === 'html') {
-          node.innerHTML = v;
-        } else if (k.startsWith('on') && typeof v === 'function') {
-          node.addEventListener(k.slice(2), v);
-        } else if (v != null) {
-          node.setAttribute(k, v);
-        }
-      });
-
-      const childArray = Array.isArray(children) ? children : [children];
-
-      childArray.forEach(c => {
-        if (c == null) return;
-        node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
-      });
-
-      return node;
-    };
-
-    function renderPublications(list) {
-      const pubList = document.getElementById('pubList');
-      pubList.innerHTML = '';
-
-      const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
-
-      const pubs = [...list]
-        .sort((a, b) => (b.year || 0) - (a.year || 0))
-        .filter(p => {
-          const hay = [
-            p.title,
-            p.venue,
-            String(p.year || ''),
-            ...(p.authors || [])
-          ].join(' ').toLowerCase();
-
-          return hay.includes(q);
-        });
-
-      for (const p of pubs) {
-        const titleLink = p.links?.doi || p.links?.arxiv || '#';
-
-        const title = el(
-          'a',
-          {
-            href: titleLink,
-            target: '_blank',
-            rel: 'noopener',
-            class: 'font-semibold underline underline-offset-2 decoration-slate-300 hover:decoration-amber-600'
-          },
-          p.title
-        );
-
-        const authorsNode = el('div', { class: 'text-sm text-slate-600 dark:text-slate-300' });
-
-        (p.authors || []).forEach((name, index) => {
-          if (index > 0) {
-            authorsNode.appendChild(document.createTextNode(', '));
-          }
-
-          if (name === p.authorBold) {
-            authorsNode.appendChild(el('strong', {}, name));
-          } else {
-            authorsNode.appendChild(document.createTextNode(name));
-          }
-        });
-
-        const linkNodes = [];
-
-        if (p.links?.doi) {
-          linkNodes.push(
-            el(
-              'a',
-              {
-                href: p.links.doi,
-                target: '_blank',
-                rel: 'noopener',
-                class: 'underline'
-              },
-              'DOI'
-            )
-          );
-        }
-
-        if (p.links?.arxiv) {
-          linkNodes.push(
-            el(
-              'a',
-              {
-                href: p.links.arxiv,
-                target: '_blank',
-                rel: 'noopener',
-                class: 'underline'
-              },
-              'arXiv'
-            )
-          );
-        }
-
-        const li = el(
-          'li',
-          {
-            class: 'rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover:bg-slate-50 dark:hover:bg-slate-900'
-          },
-          [
-            authorsNode,
-            el('div', { class: 'mt-1' }, title),
-            el('div', { class: 'mt-1 text-xs text-slate-500 dark:text-slate-400' }, p.venue || ''),
-            el('div', { class: 'mt-2 flex gap-3 text-xs' }, linkNodes)
-          ]
-        );
-
-        pubList.appendChild(li);
-      }
-    }
-
-    function copyVisibleBib() {
-      const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
-
-      const pubs = [...(window.ALL_PUBS || PUBLICATIONS)]
-        .sort((a, b) => (b.year || 0) - (a.year || 0))
-        .filter(p => {
-          const hay = [
-            p.title,
-            p.venue,
-            String(p.year || ''),
-            ...(p.authors || [])
-          ].join(' ').toLowerCase();
-
-          return hay.includes(q);
-        });
-
-      const text = pubs.map(p => p.bibtex).join('\n\n');
-
-      navigator.clipboard.writeText(text).then(() => {
-        alert('BibTeX copied for ' + pubs.length + ' entries.');
-      });
-    }
-
-    function renderNews(list) {
-      const ul = document.getElementById('newsList');
-      ul.innerHTML = '';
-
-      const items = [...list].sort((a, b) => b.date.localeCompare(a.date));
-
-      for (const n of items) {
-        ul.appendChild(
-          el(
-            'li',
-            {
-              class: 'flex gap-3 items-baseline'
-            },
-            [
-              el('span', { class: 'kbd' }, new Date(n.date).toISOString().slice(0, 10)),
-              el('span', {}, n.text)
-            ]
-          )
-        );
-      }
-    }
-
-    async function loadPubs() {
-      try {
-        const res = await fetch('publications.json', { cache: 'no-store' });
-
-        if (res.ok) {
-          const data = await res.json();
-
-          if (Array.isArray(data) && data.length) {
-            return data;
-          }
-        }
-      } catch (e) {
-        console.warn('No publications.json found. Using built-in publication list.');
-      }
-
-      return PUBLICATIONS;
-    }
-
-    /* ========================
-       BOOT
-    ======================== */
-    document.getElementById('copyBibBtn').addEventListener('click', copyVisibleBib);
-
-    document.getElementById('searchInput').addEventListener('input', () => {
-      renderPublications(window.ALL_PUBS || []);
-    });
-
-    document.getElementById('themeBtn').addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('updated').textContent = new Date().toISOString().slice(0, 10);
-
-    if (SITE.cv) {
-      document.getElementById('cvLink').href = SITE.cv;
-    }
-
-    document.getElementById('affil').textContent = 'Affiliation: ' + SITE.affiliation;
-
-    loadPubs().then(list => {
-      window.ALL_PUBS = list;
-      renderPublications(list);
-    });
-
-    renderNews(NEWS);
-  </script>
 </body>
 </html>
